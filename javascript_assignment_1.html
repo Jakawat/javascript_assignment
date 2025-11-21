@@ -1,61 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Line Number List</title>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 20px;
-            background-color: #f7f7f7;
-            color: #333;
-        }
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #949191;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h3 {
-            color: #17c2e0;
-            margin-bottom: 15px;
-        }
-        ul {
-            list-style-type: decimal;
-            padding-left: 20px;
-            border: 1px solid #ddd;
-            padding: 10px 20px;
-            border-radius: 4px;
-        }
-        #list1 li {
-            background-color: #f0f8ff;
-            margin-bottom: 4px;
-            padding: 5px;
-            border-radius: 3px;
-        }
-    </style>
+    <title>Filtered Number List</title>
 </head>
 <body>
-    <div class="container">
-        <h3>List Numbers 1 to 20 (Excluding 5, 10, 15)</h3>
-        <ul id="list1"></ul>
+    <ul id="list1"></ul>
+    
+    <script>
+        const targetList = document.getElementById("list1");
 
-        <script>
-            const targetList = document.getElementById("list1");
-
-            for (let i = 1; i <= 20; i++) {
-                if (i === 5 || i === 10 || i === 15) {
-                    console.log(`Skipping number: ${i}`);
-                    continue; 
-                }
-                const listItem = document.createElement("li");
-                listItem.textContent = `Line number ${i}`;
-                targetList.appendChild(listItem);
+        for (let i = 1; i <= 20; i++) {
+            
+            if (i === 5 || i === 10 || i === 15) {
+                continue; 
             }
-        </script>
-    </div>
+            
+            const listItem = document.createElement("li");
+            
+            listItem.textContent = i;
+            
+            targetList.appendChild(listItem);
+        }
+    </script>
 </body>
 </html>
