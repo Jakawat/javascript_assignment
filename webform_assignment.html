@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Item</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            padding: 2rem;
+        }
+        fieldset {
+            border: 1px solid #d1d5db;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        legend {
+            font-weight: 600;
+            color: #1f2937;
+            padding: 0 0.5rem;
+        }
+        input[type="text"], input[type="number"], input[type="email"], select, textarea {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-3xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
+        <h1 class="text-3xl font-extrabold text-blue-700 mb-6 border-b pb-3">
+            New Product Inventory Form
+        </h1>
+        <p class="text-sm text-gray-500 mb-6">
+            Endpoint: <code class="text-xs font-mono text-pink-600">https://athiphat-mybackend-01.southeastasia.cloudapp.azure.com/api/product</code>
+        </p>
+        <form 
+            action="https://athiphat-mybackend-01.southeastasia.cloudapp.azure.com/api/product" 
+            method="POST" 
+            enctype="multipart/form-data"
+            class="space-y-6"
+        >
+            
+            <fieldset>
+                <legend class="text-xl">General Info</legend>
+                <p class="mb-4">
+                    <label for="itemName" class="block text-sm font-medium text-gray-700 mb-1">Item Name</label>
+                    <input 
+                        type="text" 
+                        id="itemName" 
+                        name="itemName" 
+                        value="Iphone 17 pro max"
+                        size="50" 
+                        maxlength="500"
+                        required
+                        class="mt-1 block w-full"
+                    />
+                </p>
+                
+                <!-- Item Description (Textarea) -->
+                <p class="mb-4">
+                    <label for="itemDescription" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                    <textarea 
+                        id="itemDescription" 
+                        name="itemDescription" 
+                        rows="4"
+                        required
+                        class="mt-1 block w-full"
+                    >New technology simple iphone, nothing added much</textarea>
+                </p>
+
+                <p class="mb-4">
+                    <label for="coverImage" class="block text-sm font-medium text-gray-700 mb-1">Cover Image</label>
+                    <input 
+                        type="file" 
+                        id="coverImage" 
+                        name="coverImage"
+                        required
+                        class="mt-1 block w-full text-sm text-gray-500"
+                    />
+                </p>
+                <p class="mb-4">
+                    <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                    <select id="category" name="category" required class="mt-1 block w-full">
+                        <option value="notSpecified">Not Specified</option>
+                        <option value="consumption">Consumption</option>
+                        <option value="household">Household</option>
+                        <option value="electronic" selected>Electronic</option>
+                        <option value="gadget">Gadget</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend class="text-xl">Misc.</legend>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <p class="mb-4">
+                        <label for="inventoryAmount" class="block text-sm font-medium text-gray-700 mb-1">Inventory Amount</label>
+                        <input 
+                            type="number" 
+                            id="inventoryAmount" 
+                            name="inventoryAmount" 
+                            value="69"
+                            required
+                            min="0"
+                            class="mt-1 block w-full"
+                        />
+                    </p>
+                    <p class="mb-4">
+                        <label for="listPrice" class="block text-sm font-medium text-gray-700 mb-1">List Price</label>
+                        <input 
+                            type="number" 
+                            id="listPrice" 
+                            name="listPrice" 
+                            value="2000.00"
+                            required
+                            min="0.01"
+                            step="0.01"
+                            class="mt-1 block w-full"
+                        />
+                    </p>
+                </div>
+                <p class="mb-4">
+                    <span class="block text-sm font-medium text-gray-700 mb-2">Available Stores</span>
+                    <label class="inline-flex items-center mr-6">
+                        <input type="checkbox" name="availableStore[]" value="Bangkok" checked class="form-checkbox h-4 w-4 text-blue-600 rounded">
+                        <span class="ml-2 text-gray-900">Bangkok</span>
+                    </label>
+                    <label class="inline-flex items-center mr-6">
+                        <input type="checkbox" name="availableStore[]" value="Pattaya" checked class="form-checkbox h-4 w-4 text-blue-600 rounded">
+                        <span class="ml-2 text-gray-900">Pattaya</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="availableStore[]" value="Phuket" checked class="form-checkbox h-4 w-4 text-blue-600 rounded">
+                        <span class="ml-2 text-gray-900">Phuket</span>
+                    </label>
+                </p>
+                <p>
+                    <span class="block text-sm font-medium text-gray-700 mb-2">Active Status</span>
+                    <label class="inline-flex items-center mr-6">
+                        <input type="radio" name="status" value="Active" checked class="form-radio h-4 w-4 text-green-600">
+                        <span class="ml-2 text-gray-900">Active</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="status" value="Inactive" class="form-radio h-4 w-4 text-red-600">
+                        <span class="ml-2 text-gray-900">Inactive</span>
+                    </label>
+                </p>
+
+            </fieldset>
+            <fieldset>
+                <legend class="text-xl">Staff</legend>                
+                <p>
+                    <label for="staffEmail" class="block text-sm font-medium text-gray-700 mb-1">Staff Email</label>
+                    <input 
+                        type="email" 
+                        id="staffEmail" 
+                        name="staffEmail" 
+                        value="u6710833@au.edu" 
+                        required
+                        class="mt-1 block w-full"
+                        placeholder="Your student email address"
+                    />
+                </p>
+            </fieldset>
+            <button 
+                type="submit" 
+                class="w-full py-3 px-4 border border-transparent rounded-lg shadow-md text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out mt-6"
+            >
+                Submit Form
+            </button>
+            
+        </form>
+    </div>
+</body>
+</html>
