@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Inventory List</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            color: #1a73e8;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #e8f0fe;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+        li:hover {
+            background-color: #d1e3ff;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Today Fruits</h3>
+        <ul id="fruit-list"></ul>
+        <hr/>
+        <h3>Today Vegetables</h3>
+        <ul id="veg-list"></ul>
+
+        <script>
+
+            const fruits = [
+                "Apple",
+                "Banana",
+                "Orange",
+                "Mango",
+                "Strawberry"
+            ];
+
+            const vegetables = [
+                "Carrot",
+                "Broccoli",
+                "Spinach",
+                "Tomato",
+                "Cucumber"
+            ];
+
+            const fruitListElement = document.getElementById("fruit-list");
+            const vegListElement = document.getElementById("veg-list");
+
+            function appendListItem(item, listElement) {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                listElement.appendChild(listItem);
+            }
+
+            fruits.forEach(fruit => {
+                appendListItem(fruit, fruitListElement);
+            });
+
+            vegetables.forEach(veg => {
+                appendListItem(veg, vegListElement);
+            });
+
+        </script>
+    </div>
+</body>
+</html>
